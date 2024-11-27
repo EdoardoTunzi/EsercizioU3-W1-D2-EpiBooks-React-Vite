@@ -1,5 +1,6 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import fantasy from "../data/fantasy.json";
+import SingleBook from "./SingleBook";
 //import history from "../data/history.json";
 //import horror from "../data/horror.json";
 //import romance from "../data/romance.json";
@@ -18,17 +19,7 @@ const AllTheBooks = () => {
       <Row xs={1} sm={2} md={3} lg={4} xl={5} className="justify-content-center gap-2 mb-4">
         {fantasy.map((book) => (
           <Col key={book.asin}>
-            <Card className="h-100">
-              <Card.Img variant="top" src={book.img} alt={book.title} fluid className="object-fit-cover" style={{ height: "20rem" }} />
-              <Card.Body className="d-flex flex-column">
-                <Card.Title>{book.title}</Card.Title>
-
-                <div className="mt-auto d-flex gap-2">
-                  <Button variant="primary">Buy Now</Button>
-                  <Card.Text className="fw-bold fs-5 ">{book.price} €</Card.Text>
-                </div>
-              </Card.Body>
-            </Card>
+            <SingleBook book={book} />
           </Col>
         ))}
       </Row>
