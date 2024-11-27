@@ -24,9 +24,11 @@ class BookList extends Component {
             <button className="btn btn-warning fs-5">Romance</button>
             <button className="btn btn-warning fs-5">Sci-fi</button>
           </div>*/}
-        <Form>
-          <Form.Control type="search" placeholder="Search books by title..." className="mb-4" value={searchQuery} onChange={this.handleSearch} />
-        </Form>
+        <Row className="justify-content-center">
+          <Col xs={6}>
+            <Form.Control type="search" placeholder="Search books by title..." className="mb-4" value={searchQuery} onChange={this.handleSearch} />
+          </Col>
+        </Row>
         <Row xs={1} sm={2} md={3} lg={4} xl={5} className="justify-content-center gap-2 mb-4">
           {filteredBooks.map((book) => (
             <Col key={book.asin}>

@@ -15,7 +15,7 @@ class SingleBook extends Component {
     const { book } = this.props;
     const { selected } = this.state;
     return (
-      <Card className={`h-100 ${selected ? "border border-danger" : ""}`} onClick={this.toggleSelected}>
+      <Card className={`h-100 ${selected ? "border-danger" : ""}`} onClick={this.toggleSelected}>
         <Card.Img variant="top" src={book.img} alt={book.title} className="img-fluid object-fit-cover" style={{ height: "20rem" }} />
         <Card.Body className="d-flex flex-column">
           <Card.Title>{book.title}</Card.Title>
