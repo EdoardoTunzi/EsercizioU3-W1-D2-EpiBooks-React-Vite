@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Button, Card } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
   state = {
@@ -19,7 +20,7 @@ class SingleBook extends Component {
         <Card.Img variant="top" src={book.img} alt={book.title} className="img-fluid object-fit-cover" style={{ height: "20rem" }} />
         <Card.Body className="d-flex flex-column">
           <Card.Title>{book.title}</Card.Title>
-
+          {this.state.selected && <CommentArea bookID={book.asin} />}
           <div className="mt-auto d-flex gap-2 justify-content-center align-items-center">
             <Button variant="primary">Buy Now</Button>
             <Card.Text className="fw-bold fs-5 ">{book.price} €</Card.Text>
