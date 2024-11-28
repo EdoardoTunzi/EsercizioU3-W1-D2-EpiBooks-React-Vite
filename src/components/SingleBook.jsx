@@ -23,7 +23,7 @@ class SingleBook extends Component {
           {this.state.selected && <CommentArea bookID={book.asin} />}
           <div className="mt-auto d-flex gap-2 justify-content-center align-items-center">
             <Button variant="primary" onClick={this.toggleSelected}>
-              Select
+              {this.state.selected ? "Deselect" : "Select"}
             </Button>
             <Card.Text className="fw-bold fs-5 ">{book.price} €</Card.Text>
           </div>

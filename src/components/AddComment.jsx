@@ -36,16 +36,17 @@ class AddComment extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Form.Group className="mb-1" controlId="formText">
+        <Form.Group className="mb-1" controlId="review-text">
           <Form.Control
             type="textarea"
             placeholder="Write your comment"
             value={this.state.comment}
-            onChange={(e) => this.setState({ comment: e.target.value })}
+            onChange={(e) => this.setState({ ...this.state, comment: e.target.value })}
+            required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formSelect">
-          <Form.Select value={this.state.rate} onChange={(e) => this.setState({ rate: e.target.value })}>
+        <Form.Group className="mb-3" controlId="review-rating">
+          <Form.Select value={this.state.rate} onChange={(e) => this.setState({ ...this.state, rate: e.target.value })} required>
             <option value="1">⭐️</option>
             <option value="2">⭐️⭐️</option>
             <option value="3">⭐️⭐️⭐️</option>
@@ -53,9 +54,11 @@ class AddComment extends Component {
             <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="warning" className="mb-3" type="submit">
-          Add comment
-        </Button>
+        <div className="d-flex justify-content-center">
+          <Button variant="warning" className="mb-3" type="submit">
+            Add comment
+          </Button>
+        </div>
       </Form>
     );
   }
