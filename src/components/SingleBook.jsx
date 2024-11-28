@@ -16,13 +16,15 @@ class SingleBook extends Component {
     const { book } = this.props;
     const { selected } = this.state;
     return (
-      <Card className={`h-100 ${selected ? "border-danger" : ""}`} onClick={this.toggleSelected}>
+      <Card className={`h-100 ${selected ? "border-danger" : ""}`}>
         <Card.Img variant="top" src={book.img} alt={book.title} className="img-fluid object-fit-cover" style={{ height: "20rem" }} />
         <Card.Body className="d-flex flex-column">
           <Card.Title>{book.title}</Card.Title>
           {this.state.selected && <CommentArea bookID={book.asin} />}
           <div className="mt-auto d-flex gap-2 justify-content-center align-items-center">
-            <Button variant="primary">Buy Now</Button>
+            <Button variant="primary" onClick={this.toggleSelected}>
+              Select
+            </Button>
             <Card.Text className="fw-bold fs-5 ">{book.price} €</Card.Text>
           </div>
         </Card.Body>
