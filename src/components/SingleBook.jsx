@@ -10,7 +10,7 @@ class SingleBook extends Component {
         {/* qui chiamo al funzione di booklist che prende l'asin del selez. e lo passa allo stato di booklist */}
         <Card.Img variant="top" src={book.img} alt={book.title} className="img-fluid object-fit-cover" style={{ height: "20rem" }} />
         <Card.Body className="d-flex flex-column">
-          <Card.Title>{book.title}</Card.Title>
+          <Card.Title className="fs-6">{book.title}</Card.Title>
 
           <div className="mt-auto d-flex gap-2 justify-content-center align-items-center">
             <Button variant="primary">Select</Button>
