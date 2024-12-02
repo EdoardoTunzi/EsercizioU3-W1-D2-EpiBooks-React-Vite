@@ -6,7 +6,7 @@ import CommentArea from "./CommentArea";
 class BookList extends Component {
   state = {
     searchQuery: "",
-    selectedBook: null
+    selectedBookAsin: null
   };
 
   handleSearch = (event) => {
@@ -14,11 +14,11 @@ class BookList extends Component {
   };
 
   handleBookSelection = (book) => {
-    this.setState({ selectedBook: book });
+    this.setState({ selectedBookAsin: book.asin });
   };
   render() {
     const { books } = this.props;
-    const { searchQuery, selectedBook } = this.state;
+    const { searchQuery, selectedBookAsin } = this.state;
     const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
@@ -40,13 +40,13 @@ class BookList extends Component {
             <Row xs={1} sm={2} md={3} lg={4} xl={5} className="justify-content-center gap-2">
               {filteredBooks.map((book) => (
                 <Col key={book.asin}>
-                  <SingleBook book={book} onBookSelect={this.handleBookSelection} />
+                  <SingleBook book={book} onBookSelect={this.handleBookSelection} selectedBookAsin={selectedBookAsin} />
                 </Col>
               ))}
             </Row>
           </Col>
 
-          <Col md={3}>{selectedBook ? <CommentArea bookID={selectedBook.asin} /> : <div>Seleziona un libro per vedere i commenti</div>}</Col>
+          <Col md={3}>{selectedBookAsin ? <CommentArea bookID={selectedBookAsin} /> : <div>Select a book to read reviews</div>}</Col>
         </Row>
       </Container>
     );

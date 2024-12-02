@@ -4,12 +4,19 @@ import AddComment from "./AddComment";
 
 class CommentArea extends Component {
   state = {
-    comments: [],
-    error: null
+    comments: []
   };
   //carica al montaggio componente la fetch
   componentDidMount() {
-    this.handleCommentsFetch();
+    if (this.props.bookID) {
+      this.handleCommentsFetch();
+    }
+  }
+  //aggiorna i commenti al cambiamento del bookID
+  componentDidUpdate(prevProps) {
+    if (prevProps.bookID !== this.props.bookID) {
+      this.handleCommentsFetch();
+    }
   }
 
   //funzione per fare la fetch
@@ -22,10 +29,10 @@ class CommentArea extends Component {
         }
       });
       if (response.ok) {
-        const comment = await response.json();
-        console.log(comment);
+        const comments = await response.json();
+        console.log("Fetched comments", comments);
 
-        this.setState({ comments: comment });
+        this.setState({ comments });
       }
     } catch (error) {
       console.log(error);
@@ -36,7 +43,7 @@ class CommentArea extends Component {
     return (
       <>
         <CommentsList comments={this.state.comments} />
-        <AddComment bookID={this.props.bookID} />
+        <AddComment bookID={this.props.bookID} onCommentAdded={this.handleCommentsFetch} />
       </>
     );
   }
