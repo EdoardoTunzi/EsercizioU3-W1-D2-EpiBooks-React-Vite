@@ -28,6 +28,7 @@ class AddComment extends Component {
       });
       if (response.ok) {
         this.setState({ comment: "", rate: 1 });
+        this.props.onCommentAdded();
       }
     } catch (error) {
       console.log("Error posting comment:", error);

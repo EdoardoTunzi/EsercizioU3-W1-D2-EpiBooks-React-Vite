@@ -6,7 +6,7 @@ import CommentArea from "./CommentArea";
 class BookList extends Component {
   state = {
     searchQuery: "",
-    selectedBookAsin: null
+    selectedBookAsin: ""
   };
 
   handleSearch = (event) => {
@@ -37,7 +37,7 @@ class BookList extends Component {
         </Row>
         <Row>
           <Col md={9}>
-            <Row xs={1} sm={2} md={3} lg={4} className="justify-content-center gap-2">
+            <Row xs={1} sm={2} md={3} lg={5} className="justify-content-center gap-2">
               {filteredBooks.map((book) => (
                 <Col key={book.asin}>
                   <SingleBook book={book} onBookSelect={this.handleBookSelection} selectedBookAsin={selectedBookAsin} />
