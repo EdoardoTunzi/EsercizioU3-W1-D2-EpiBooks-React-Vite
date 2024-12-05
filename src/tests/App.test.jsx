@@ -27,8 +27,8 @@ describe("verifies Welcome functionality", () => {
   });
 });
 //TEST 2
-describe("verifies Booklist contains ....", () => {
-  it("check cards number in booklist ", async () => {
+describe("verifies Booklist functionality", () => {
+  it("checks that are generated as much cards as contained in Fantasy.json ", async () => {
     render(<App />);
     const card = await screen.queryAllByRole("img");
     screen.debug(card);
@@ -37,8 +37,8 @@ describe("verifies Booklist contains ....", () => {
 });
 
 //test 4
-describe("verifies functionality of Booklist", () => {
-  it("check if CommentArea is rendered correctly", async () => {
+describe("verifies functionality of searchbar", () => {
+  it("check if Searchbar filters and returns the exact number of searched books", async () => {
     render(<App />);
     const inputField = screen.getByPlaceholderText(/Search books by title/i);
     fireEvent.change(inputField, { target: { value: "dragon" } });
@@ -47,6 +47,3 @@ describe("verifies functionality of Booklist", () => {
     expect(filteredElements).toHaveLength(8);
   });
 });
-
-//test 5 Verifica che, cliccando su un libro, il suo bordo cambi colore.
-describe("");
