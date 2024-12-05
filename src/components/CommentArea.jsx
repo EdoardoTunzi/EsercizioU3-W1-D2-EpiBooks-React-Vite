@@ -25,6 +25,7 @@ const CommentArea = ({ bookID }) => {
     if (bookID) {
       handleCommentsFetch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookID]);
 
   //funzione per fare la fetch
