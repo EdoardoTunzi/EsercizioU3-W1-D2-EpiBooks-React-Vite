@@ -4,17 +4,10 @@ import App from "../App";
 import Welcome from "../components/Welcome";
 import BookList from "../components/BookList";
 import fantasy from "../data/fantasy.json";
-/* describe('App', () => {
-  it('renders the App component', () => {
-    render(<App />)
-    
-    screen.debug(); // prints out the jsx in the App component unto the command line
-  })
-}) */
 
 //TEST 1
 //questo describe è la sezione dei test su Welcome
-describe("verifies Welcome functionality", () => {
+describe("Welcome component functionality", () => {
   // singolo test e descrizione
   it("checks if welcome is mounted correctly", () => {
     //definisco l'elemento su cui fare il test
@@ -29,12 +22,14 @@ describe("verifies Welcome functionality", () => {
 //TEST 2
 describe("verifies Booklist functionality", () => {
   it("checks that are generated as much cards as contained in Fantasy.json ", async () => {
-    render(<App />);
+    render(<BookList books={fantasy} />);
     const card = await screen.queryAllByRole("img");
-    screen.debug(card);
-    expect(card.length).toBe(fantasy.length);
+
+    expect(card).toHaveLength(fantasy.length);
   });
 });
+
+//test3
 
 //test 4
 describe("verifies functionality of searchbar", () => {
